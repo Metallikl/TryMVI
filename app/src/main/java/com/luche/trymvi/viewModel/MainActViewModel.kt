@@ -20,13 +20,14 @@ class MainActViewModel : ViewModel() {
     }
 
     private fun initializeScreen() {
+        viewState.state.value = MainActViewState.STATE.INITIAL
         viewModelScope.launch {
-            viewState.state.value = MainActViewState.STATE.LOADING
+            delay(5000)
             viewState.let {
                 it.name.value = ""
                 it.interaction.value = MainActViewState.ViewInteraction.HideSaveBtn
             }
-            viewState.state.value = MainActViewState.STATE.SUCCESS
+            viewState.state.postValue(MainActViewState.STATE.SUCCESS)
         }
 
     }

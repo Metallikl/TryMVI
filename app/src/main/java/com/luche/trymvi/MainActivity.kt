@@ -64,22 +64,25 @@ class MainActivity : AppCompatActivity() {
     private fun setupObservers() {
         viewModel.viewState.state.observe(this, Observer { state ->
             when (state) {
+                INITIAL -> {
+                    //stopShimmer()
+                }
                 LOADING -> {
                     showToast(LOADING.toString())
                     hideSendButton()
-                    startShimmer()
+                    //startShimmer()
                 }
                 ERROR -> {
                     showToast(ERROR.toString())
-                    stopShimmer()
+                    //stopShimmer()
                 }
                 SUCCESS -> {
                     showToast(SUCCESS.toString())
-                    stopShimmer()
+                    //stopShimmer()
                 }
                 else -> {
                     showToast("Vizi")
-                    stopShimmer()
+                    //stopShimmer()
                 }
             }
         })

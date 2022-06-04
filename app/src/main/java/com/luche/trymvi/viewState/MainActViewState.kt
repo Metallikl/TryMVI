@@ -9,10 +9,14 @@ import androidx.lifecycle.switchMap
 class MainActViewState {
     //reflete o estado atual
     val state = MutableLiveData<STATE>().apply {
-        MainActViewState.STATE.SUCCESS
+        STATE.INITIAL
     }
     //reflete uma inteação entre o model do MVI / viewModel
     val interaction = MutableLiveData<ViewInteraction>()
+
+    val isInitial : LiveData<Boolean> = map(state){
+        it == STATE.INITIAL
+    }
 
     val isLoadingState : LiveData<Boolean> = map(state){
         it == STATE.LOADING
@@ -42,6 +46,7 @@ class MainActViewState {
     }
     //Representa os estados da tela.
     enum class STATE {
+        INITIAL,
         LOADING,
         ERROR,
         SUCCESS
