@@ -1,10 +1,8 @@
-package com.luche.trymvi.viewState
+package com.luche.trymvi.feature_savename.presentation.viewState
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations.map
-import androidx.lifecycle.map
-import androidx.lifecycle.switchMap
 
 class MainActViewState {
     //reflete o estado atual

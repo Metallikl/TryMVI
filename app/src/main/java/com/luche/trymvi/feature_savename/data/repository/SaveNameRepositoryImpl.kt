@@ -1,6 +1,7 @@
-package com.luche.trymvi.repository
+package com.luche.trymvi.feature_savename.data.repository
 
-import com.luche.trymvi.datasource.SaveNameDataSource
+import com.luche.trymvi.feature_savename.data.datasource.SaveNameDataSource
+import com.luche.trymvi.feature_savename.domain.repository.SaveNameRepository
 import com.luche.trymvi.util.ResultStatus
 import java.lang.Exception
 

@@ -1,4 +1,4 @@
-package com.luche.trymvi.ui
+package com.luche.trymvi.feature_savename.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,10 +13,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.luche.trymvi.R
 import com.luche.trymvi.databinding.ActivityMainBinding
 import com.luche.trymvi.extension.hideKeyboard
-import com.luche.trymvi.viewAction.MainViewAction
-import com.luche.trymvi.viewModel.MainActViewModel
-import com.luche.trymvi.viewState.MainActViewState.*
-import com.luche.trymvi.viewState.MainActViewState.STATE.*
+import com.luche.trymvi.feature_savename.presentation.viewAction.MainViewAction
+import com.luche.trymvi.feature_savename.presentation.viewModel.MainActViewModel
+import com.luche.trymvi.feature_savename.presentation.viewState.MainActViewState.*
+import com.luche.trymvi.feature_savename.presentation.viewState.MainActViewState.STATE.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel

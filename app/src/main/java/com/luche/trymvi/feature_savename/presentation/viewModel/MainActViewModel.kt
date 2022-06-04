@@ -1,11 +1,11 @@
-package com.luche.trymvi.viewModel
+package com.luche.trymvi.feature_savename.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.luche.trymvi.usecases.SaveNameUseCase
+import com.luche.trymvi.feature_savename.domain.usecases.SaveNameUseCase
 import com.luche.trymvi.util.ResultStatus
-import com.luche.trymvi.viewAction.MainViewAction
-import com.luche.trymvi.viewState.MainActViewState
+import com.luche.trymvi.feature_savename.presentation.viewAction.MainViewAction
+import com.luche.trymvi.feature_savename.presentation.viewState.MainActViewState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

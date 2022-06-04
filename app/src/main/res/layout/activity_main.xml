@@ -6,13 +6,13 @@
 
         <variable
             name="viewModel"
-            type="com.luche.trymvi.viewModel.MainActViewModel" />
+            type="com.luche.trymvi.feature_savename.presentation.viewModel.MainActViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.MainActivity">
+        tools:context=".feature_savename.presentation.ui.MainActivity">
 
         <TextView
             android:id="@+id/tvNameLbl"

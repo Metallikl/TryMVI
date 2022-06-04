@@ -1,4 +1,4 @@
-package com.luche.trymvi.adapter
+package com.luche.trymvi.feature_savename.adapter
 
 import android.view.View
 import androidx.core.view.isVisible

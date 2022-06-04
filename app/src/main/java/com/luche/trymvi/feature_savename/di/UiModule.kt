@@ -1,6 +1,6 @@
-package com.luche.trymvi.di
+package com.luche.trymvi.feature_savename.di
 
-import com.luche.trymvi.viewModel.MainActViewModel
+import com.luche.trymvi.feature_savename.presentation.viewModel.MainActViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

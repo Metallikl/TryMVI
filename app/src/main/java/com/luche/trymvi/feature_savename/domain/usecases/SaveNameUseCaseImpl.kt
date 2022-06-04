@@ -1,6 +1,6 @@
-package com.luche.trymvi.usecases
+package com.luche.trymvi.feature_savename.domain.usecases
 
-import com.luche.trymvi.repository.SaveNameRepository
+import com.luche.trymvi.feature_savename.domain.repository.SaveNameRepository
 import com.luche.trymvi.util.ResultStatus
 
 class SaveNameUseCaseImpl(

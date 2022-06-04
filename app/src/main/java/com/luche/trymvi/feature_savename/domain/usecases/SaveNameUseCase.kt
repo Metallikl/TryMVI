@@ -1,4 +1,4 @@
-package com.luche.trymvi.usecases
+package com.luche.trymvi.feature_savename.domain.usecases
 
 import com.luche.trymvi.util.ResultStatus
 

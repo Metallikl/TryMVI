@@ -1,4 +1,4 @@
-package com.luche.trymvi.repository
+package com.luche.trymvi.feature_savename.domain.repository
 
 import com.luche.trymvi.util.ResultStatus
 

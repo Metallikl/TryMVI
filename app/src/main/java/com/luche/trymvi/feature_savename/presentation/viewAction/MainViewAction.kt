@@ -1,4 +1,4 @@
-package com.luche.trymvi.viewAction
+package com.luche.trymvi.feature_savename.presentation.viewAction
 
 sealed class MainViewAction{
     object initScreen : MainViewAction()
