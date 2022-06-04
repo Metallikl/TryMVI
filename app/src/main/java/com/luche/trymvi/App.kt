@@ -1,7 +1,9 @@
 package com.luche.trymvi
 
 import android.app.Application
+import com.luche.trymvi.di.RepositoryModule
 import com.luche.trymvi.di.UiModule
+import com.luche.trymvi.di.UseCaseModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -15,7 +17,13 @@ class App : Application() {
         startKoin {
             androidContext(this@App)
             //androidLogger(level = Level.DEBUG)
-            modules(listOf(UiModule.mainModule))
+            modules(
+                listOf(
+                    UiModule.mainModule,
+                    UseCaseModule.usecaseModule,
+                    RepositoryModule.repositoryModule
+                )
+            )
         }
     }
 }

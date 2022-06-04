@@ -7,7 +7,7 @@ import org.koin.dsl.module
 object UiModule {
     val mainModule = module {
         viewModel {
-            MainActViewModel()
+            MainActViewModel(saveNameUseCase = get())
         }
     }
 }

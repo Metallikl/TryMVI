@@ -2,20 +2,24 @@ package com.luche.trymvi.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.luche.trymvi.usecases.SaveNameUseCase
+import com.luche.trymvi.util.ResultStatus
 import com.luche.trymvi.viewAction.MainViewAction
 import com.luche.trymvi.viewState.MainActViewState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainActViewModel : ViewModel() {
+class MainActViewModel(
+    private val saveNameUseCase: SaveNameUseCase
+) : ViewModel() {
     val viewState = MainActViewState()
 
     fun dispacherViewAction(action: MainViewAction) {
         when (action) {
+            MainViewAction.initScreen -> initializeScreen()
             is MainViewAction.SendName -> sendNameToApi(action.name)
             is MainViewAction.UpdateName -> updateName(action.name)
             is MainViewAction.ValidateName -> validateName(action.name)
-            MainViewAction.initScreen -> initializeScreen()
         }
     }
 
@@ -29,7 +33,6 @@ class MainActViewModel : ViewModel() {
             }
             viewState.state.postValue(MainActViewState.STATE.SUCCESS)
         }
-
     }
 
     private fun validateName(name: String) {
@@ -56,9 +59,20 @@ class MainActViewModel : ViewModel() {
         } else MainActViewState.STATE.ERROR
     }
 
-
     private fun sendNameToApi(name: String) {
-        TODO("Not yet implemented")
+        viewState.state.value = MainActViewState.STATE.LOADING
+        viewModelScope.launch {
+            when (val result = saveNameUseCase(name)) {
+                is ResultStatus.Success -> {
+                    viewState.state.postValue(MainActViewState.STATE.LOADING)
+                    viewState.interaction.value = MainActViewState.ViewInteraction.NameSuccessfullySaved(result.data)
+                }
+                is ResultStatus.Error -> {
+                    viewState.state.postValue(MainActViewState.STATE.ERROR)
+                    viewState.interaction.value = MainActViewState.ViewInteraction.ShowErrorSnack(result.throwable)
+                }
+            }
+        }
     }
 
     private fun updateName(name: String) {

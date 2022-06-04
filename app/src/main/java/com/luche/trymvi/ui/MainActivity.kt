@@ -1,4 +1,4 @@
-package com.luche.trymvi
+package com.luche.trymvi.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,14 +8,17 @@ import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
+import com.luche.trymvi.R
 import com.luche.trymvi.databinding.ActivityMainBinding
 import com.luche.trymvi.extension.hideKeyboard
 import com.luche.trymvi.viewAction.MainViewAction
 import com.luche.trymvi.viewModel.MainActViewModel
-import com.luche.trymvi.viewState.MainActViewState
 import com.luche.trymvi.viewState.MainActViewState.*
 import com.luche.trymvi.viewState.MainActViewState.STATE.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -41,6 +44,14 @@ class MainActivity : AppCompatActivity() {
             //
             viewModel.dispacherViewAction(
                 MainViewAction.ValidateName(
+                    binding.etName.text.toString().trim()
+                )
+            )
+        }
+        //
+        binding.btnSendName.setOnClickListener {
+            viewModel.dispacherViewAction(
+                MainViewAction.SendName(
                     binding.etName.text.toString().trim()
                 )
             )
@@ -98,6 +109,15 @@ class MainActivity : AppCompatActivity() {
                 is ViewInteraction.InvalidateNameError -> {
                     showSnackBar(interaction.error)
                     hideSendButton()
+                }
+                is ViewInteraction.NameSuccessfullySaved -> {
+                    showToast(
+                        "${interaction.name} enviado com sucesso !"
+                    )
+                    lifecycleScope.launch{
+                        delay(1000)
+                        viewModel.dispacherViewAction(MainViewAction.initScreen)
+                    }
                 }
                 null -> showToast("Vizi interatction")
             }

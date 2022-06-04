@@ -43,6 +43,7 @@ class MainActViewState {
         object ShowSaveBtn : ViewInteraction()
         data class ShowErrorSnack(val error: String) : ViewInteraction()
         data class InvalidateNameError(val error: String) : ViewInteraction()
+        data class NameSuccessfullySaved(val name: String): ViewInteraction()
     }
     //Representa os estados da tela.
     enum class STATE {
