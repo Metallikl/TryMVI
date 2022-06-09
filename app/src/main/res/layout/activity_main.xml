@@ -1,120 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature_savename.presentation.ui.MainActivity">
 
-    <data>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mainNavHost"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/main_navigation"
+        />
 
-        <variable
-            name="viewModel"
-            type="com.luche.trymvi.feature_savename.presentation.viewModel.MainActViewModel" />
-    </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".feature_savename.presentation.ui.MainActivity">
-
-        <TextView
-            android:id="@+id/tvNameLbl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="50dp"
-            android:text="Hello World!"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.viewState.name}"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintEnd_toStartOf="@+id/ivValidade"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tvNameLbl"
-            app:layout_constraintTop_toBottomOf="@+id/tvNameLbl"
-            tools:text="Name Name Name Name Name Name Name Name Name  Name  Name  Name "
-            android:enabled="@{!viewModel.viewState.isInitial()}"
-            />
-
-        <ImageView
-            android:id="@+id/ivValidade"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="32dp"
-            android:enabled="@{viewModel.viewState.isValidadeButtonEnabled}"
-            android:padding="4dp"
-            app:layout_constraintBottom_toBottomOf="@+id/etName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/etName"
-            app:srcCompat="@drawable/ic_baseline_check_circle_outline_24"
-            app:tint="@color/enable_colors_states" />
-
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/sfValidator"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintBottom_toBottomOf="@+id/etName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/etName"
-            app:shimmer_direction="left_to_right"
-            app:shimmer_shape="radial"
-            app:showShimmerEffect="@{viewModel.viewState.isInitial()}">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="4dp"
-                android:src="@drawable/ic_baseline_check_circle_outline_24" />
-        </com.facebook.shimmer.ShimmerFrameLayout>
-
-        <TextView
-            android:id="@+id/tvCounter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.viewState.counter.toString()}"
-            app:layout_constraintEnd_toEndOf="@+id/etName"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/etName"
-            app:layout_constraintTop_toBottomOf="@+id/etName"
-            tools:text="30" />
-
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/sfLayout"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCounter"
-            app:shimmer_auto_start="true"
-            app:shimmer_direction="left_to_right"
-            app:shimmer_shape="radial"
-            app:showShimmerEffect="@{viewModel.viewState.isLoadingState() || viewModel.viewState.isInitial()}">
-
-            <Button
-                android:id="@+id/btnShimmer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCounter" />
-        </com.facebook.shimmer.ShimmerFrameLayout>
-
-        <Button
-            android:id="@+id/btnSendName"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:text="Button"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCounter" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,7 @@ class SaveNameRepositoryImpl(
     override suspend fun saveNameIntoServer(name: String): ResultStatus<String> {
         return try {
             ResultStatus.Success(
-                saveNameDataSource.saveNameIntoServer(name)
+                saveNameDataSource.saveName(name)
             )
         } catch (e: Exception) {
             ResultStatus.Error(
