@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.luche.trymvi.feature_savename.presentation.viewModel.SaveNameViewModel" />
+            type="com.luche.trymvi.feature_savename.presentation.viewModel.SaveGuestViewModel" />
     </data>
 
     <FrameLayout

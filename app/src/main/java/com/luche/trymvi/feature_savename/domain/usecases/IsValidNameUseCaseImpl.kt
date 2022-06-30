@@ -1,11 +1,11 @@
 package com.luche.trymvi.feature_savename.domain.usecases
 
-import com.luche.trymvi.feature_savename.presentation.viewState.SaveNameViewState
+import com.luche.trymvi.feature_savename.presentation.viewState.SaveGuestState
 
 class IsValidNameUseCaseImpl: IsValidNameUseCase {
-    override suspend fun invoke(name: String): SaveNameViewState.STATE {
+    override suspend fun invoke(name: String): SaveGuestState.STATE {
         return if (name.isNotEmpty() && name.length > 4) {
-            SaveNameViewState.STATE.SUCCESS
-        } else SaveNameViewState.STATE.ERROR
+            SaveGuestState.STATE.SUCCESS
+        } else SaveGuestState.STATE.ERROR
     }
 }

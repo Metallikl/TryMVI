@@ -1,6 +1,7 @@
 package com.luche.trymvi
 
 import android.app.Application
+import com.luche.trymvi.feature_savename.di.DatabaseModule
 import com.luche.trymvi.feature_savename.di.RepositoryModule
 import com.luche.trymvi.feature_savename.di.UiModule
 import com.luche.trymvi.feature_savename.di.UseCaseModule
@@ -17,6 +18,7 @@ class App : Application() {
             //androidLogger(level = Level.DEBUG)
             modules(
                 listOf(
+                    DatabaseModule.databaseModule,
                     UiModule.mainModule,
                     UseCaseModule.usecaseModule,
                     RepositoryModule.repositoryModule

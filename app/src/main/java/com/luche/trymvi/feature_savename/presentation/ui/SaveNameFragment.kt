@@ -15,9 +15,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.luche.trymvi.R
 import com.luche.trymvi.databinding.FragmentSaveNameBinding
 import com.luche.trymvi.extension.hideKeyboard
-import com.luche.trymvi.feature_savename.presentation.viewAction.SaveNameViewAction
-import com.luche.trymvi.feature_savename.presentation.viewModel.SaveNameViewModel
-import com.luche.trymvi.feature_savename.presentation.viewState.SaveNameViewState
+import com.luche.trymvi.feature_savename.presentation.viewAction.SaveGuestAction
+import com.luche.trymvi.feature_savename.presentation.viewModel.SaveGuestViewModel
+import com.luche.trymvi.feature_savename.presentation.viewState.SaveGuestState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,7 +25,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SaveNameFragment : Fragment() {
 
     private lateinit var binding: FragmentSaveNameBinding
-    private val viewModel: SaveNameViewModel by viewModel()
+    private val viewModel: SaveGuestViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,7 +55,7 @@ class SaveNameFragment : Fragment() {
             it.hideKeyboard()
             //
             viewModel.dispacherViewAction(
-                SaveNameViewAction.ValidateName(
+                SaveGuestAction.ValidateGuest(
                     binding.etName.text.toString().trim()
                 )
             )
@@ -63,7 +63,7 @@ class SaveNameFragment : Fragment() {
         //
         binding.btnSendName.setOnClickListener {
             viewModel.dispacherViewAction(
-                SaveNameViewAction.SendName(
+                SaveGuestAction.SendGuest(
                     binding.etName.text.toString().trim()
                 )
             )
@@ -73,34 +73,34 @@ class SaveNameFragment : Fragment() {
     private fun setupTextView() {
         binding.etName.doOnTextChanged { _, _, _, _ ->
             viewModel.dispacherViewAction(
-                SaveNameViewAction.UpdateName(binding.etName.text.toString())
+                SaveGuestAction.UpdateGuest(binding.etName.text.toString())
             )
         }
     }
 
     private fun setupInitScreen() {
         viewModel.dispacherViewAction(
-            SaveNameViewAction.initScreen
+            SaveGuestAction.initScreen
         )
     }
 
     private fun setupObservers() {
         viewModel.viewState.state.observe(viewLifecycleOwner, Observer { state ->
             when (state) {
-                SaveNameViewState.STATE.INITIAL -> {
+                SaveGuestState.STATE.INITIAL -> {
                     //stopShimmer()
                 }
-                SaveNameViewState.STATE.LOADING -> {
-                    showToast(SaveNameViewState.STATE.LOADING.toString())
+                SaveGuestState.STATE.LOADING -> {
+                    //showToast(SaveGuestState.STATE.LOADING.toString())
                     hideSendButton()
                     //startShimmer()
                 }
-                SaveNameViewState.STATE.ERROR -> {
-                    showToast(SaveNameViewState.STATE.ERROR.toString())
+                SaveGuestState.STATE.ERROR -> {
+                    //showToast(SaveGuestState.STATE.ERROR.toString())
                     //stopShimmer()
                 }
-                SaveNameViewState.STATE.SUCCESS -> {
-                    showToast(SaveNameViewState.STATE.SUCCESS.toString())
+                SaveGuestState.STATE.SUCCESS -> {
+                    //showToast(SaveGuestState.STATE.SUCCESS.toString())
                     //stopShimmer()
                 }
                 else -> {
@@ -111,24 +111,24 @@ class SaveNameFragment : Fragment() {
         })
         viewModel.viewState.interaction.observe(viewLifecycleOwner, Observer { interaction ->
             when (interaction) {
-                SaveNameViewState.ViewInteraction.HideSaveBtn -> {
+                SaveGuestState.ViewInteraction.HideSaveBtn -> {
                     hideSendButton()
                 }
-                is SaveNameViewState.ViewInteraction.ShowErrorSnack -> showSnackBar(interaction.error)
-                SaveNameViewState.ViewInteraction.ShowSaveBtn -> {
+                is SaveGuestState.ViewInteraction.ShowErrorSnack -> showSnackBar(interaction.error)
+                SaveGuestState.ViewInteraction.ShowSaveBtn -> {
                     binding.btnSendName.visibility = View.VISIBLE
                 }
-                is SaveNameViewState.ViewInteraction.InvalidateNameError -> {
+                is SaveGuestState.ViewInteraction.InvalidateNameError -> {
                     showSnackBar(interaction.error)
                     hideSendButton()
                 }
-                is SaveNameViewState.ViewInteraction.NameSuccessfullySaved -> {
+                is SaveGuestState.ViewInteraction.NameSuccessfullySaved -> {
                     showToast(
                         "${interaction.name} enviado com sucesso !"
                     )
                     lifecycleScope.launch{
                         delay(1000)
-                        viewModel.dispacherViewAction(SaveNameViewAction.initScreen)
+                        viewModel.dispacherViewAction(SaveGuestAction.initScreen)
                     }
                 }
                 null -> showToast("Vizi interatction")
