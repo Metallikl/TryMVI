@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/saveNameFragment">
+    app:startDestination="@id/guestListFragment">
 
     <fragment
         android:id="@+id/saveNameFragment"
         android:name="com.luche.trymvi.feature_savename.presentation.ui.SaveNameFragment"
         android:label="SaveNameFragment" />
+    <fragment
+        android:id="@+id/guestListFragment"
+        android:name="com.luche.trymvi.feature_listguest.presentation.GuestListFragment"
+        android:label="fragment_guest_list"
+        tools:layout="@layout/fragment_guest_list" >
+        <action
+            android:id="@+id/action_guestListFragment_to_saveNameFragment"
+            app:destination="@id/saveNameFragment" />
+    </fragment>
 </navigation>

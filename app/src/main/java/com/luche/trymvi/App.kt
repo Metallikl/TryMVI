@@ -1,6 +1,7 @@
 package com.luche.trymvi
 
 import android.app.Application
+import com.luche.trymvi.feature_listguest.di.GuestListModule
 import com.luche.trymvi.feature_savename.di.DatabaseModule
 import com.luche.trymvi.feature_savename.di.RepositoryModule
 import com.luche.trymvi.feature_savename.di.UiModule
@@ -9,7 +10,6 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class App : Application() {
-
     override fun onCreate() {
         super.onCreate()
         //
@@ -21,7 +21,8 @@ class App : Application() {
                     DatabaseModule.databaseModule,
                     UiModule.mainModule,
                     UseCaseModule.usecaseModule,
-                    RepositoryModule.repositoryModule
+                    RepositoryModule.repositoryModule,
+                    GuestListModule.guestListModule
                 )
             )
         }

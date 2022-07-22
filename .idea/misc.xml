@@ -4,10 +4,23 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/danie/AndroidStudioProjects/TryMVI/app/src/main/res/drawable/enable_color_states.xml" value="0.1" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/TryMVI/app/src/main/res/drawable/ic_baseline_person_add_alt_1_24.xml" value="0.2245" />
         <entry key="..\:/Users/danie/AndroidStudioProjects/TryMVI/app/src/main/res/layout/activity_main.xml" value="0.1872037914691943" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/TryMVI/app/src/main/res/layout/fragment_guest_list.xml" value="0.1563467492260062" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/TryMVI/app/src/main/res/layout/fragment_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/TryMVI/app/src/main/res/layout/fragment_item_list.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/danie/AndroidStudioProjects/TryMVI/app/src/main/res/layout/fragment_save_name.xml" value="0.20153985507246377" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/TryMVI/app/src/main/res/layout/guest_item_list.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/TryMVI/app/src/main/res/layout/guest_item_shimmer_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/TryMVI/app/src/main/res/layout/guest_list_shimmer_include.xml" value="0.3468354430379747" />
+        <entry key="..\:/Users/danie/AndroidStudioProjects/TryMVI/app/src/main/res/menu/guest_list_menu.xml" value="0.365625" />
       </map>
     </option>
+  </component>
+  <component name="EntryPointsManager">
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="androidx.annotation.MainThread" />
+    </list>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

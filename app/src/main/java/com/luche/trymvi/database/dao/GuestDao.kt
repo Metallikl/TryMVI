@@ -11,6 +11,12 @@ interface GuestDao {
     @Query("SELECT * FROM guest WHERE name = :name")
     fun getByName(name: String): Guest
 
+    @Query("SELECT * FROM guest WHERE name like '%'||:name||'%'")
+    fun getByConstainsName(name: String): List<Guest>
+
+    @Query("SELECT * FROM guest WHERE id like :id")
+    fun getById(id: String): Guest
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg guest: Guest)
 
